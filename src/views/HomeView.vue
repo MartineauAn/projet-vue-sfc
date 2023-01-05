@@ -1,6 +1,5 @@
 <template>
-  
-  <div id="app" class="flex flex-col h-screen" v-cloak>
+  <div class="flex flex-col h-screen">
     <Navbar @searchShows="searchShows"/>
     <div
       id="contenu"
@@ -31,6 +30,7 @@ export default {
       page: 0,
       shows: [],
       filteredShows: new Array(),
+      searchQuery: "",
     };
   },
   components: {
@@ -45,6 +45,7 @@ export default {
   watch: {},
   methods: {
     searchShows(searchQuery) {
+      this.searchQuery = searchQuery
       console.log("zigzig")
       this.filteredShows = this.shows.filter((show) => {
         return show.name.toLowerCase().includes(searchQuery.toLowerCase());
@@ -63,6 +64,7 @@ export default {
     },
     onScroll({ target: { scrollTop, clientHeight, scrollHeight } }) {
       if (scrollTop + clientHeight >= scrollHeight && this.searchQuery == "") {
+        console.log("a")
         this.fetchTvShows();
       }
     },
