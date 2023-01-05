@@ -23,10 +23,10 @@
           v-bind:key="show.id"
           class="w-full h-full shadow-lg hover:shadow-xl"
         >
-          <a
+          <div
             class="flex justify-start h-full w-full hover:cursor-pointer"
             target="_blank"
-            v-bind:href="baseUrl + show.permalink"
+            @click="goToDetail(show.permalink)"
           >
             <div class="h-full w-1/3 flex items-center p-1">
               <img
@@ -69,7 +69,7 @@
                 </div>
               </div>
             </div>
-          </a>
+          </div>
         </div>
       </div>
     </div>
@@ -123,6 +123,14 @@ export default {
         this.fetchTvShows();
       }
     },
+    goToDetail: function(slug){
+      this.$router.push(
+        {
+          name: "detail",
+          params: {title: slug}
+        }
+      );
+    }
   },
 };
 </script>
