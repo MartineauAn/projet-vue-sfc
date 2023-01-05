@@ -4,7 +4,31 @@
     <main class="flex-grow p-5">
       <div class="w-full rounded overflow-hidden shadow-lg">
         <!-- Afficher le titre de la série -->
-        <h1 class="font-bold text-3xl mb-2">{{ detail.name }}</h1>
+        <div class="flex justify-between">
+          <div class=""></div>
+          <div class="flex.justify-center">
+            <h1 class="font-bold text-3xl mb-2">{{ detail.name }}</h1>
+          </div>
+          <div class="flex justify-end item-center">
+            <a
+              v-bind:href="detail.url"
+              target="_blank"
+              class="
+                p-2
+                flex
+                item-center
+                text-xl
+                border
+                rounded-md
+                border-gray-600
+                text-gray-600
+                hover:bg-gray-600 hover:text-white
+              "
+              >More</a
+            >
+          </div>
+        </div>
+
         <!-- Afficher l'image de la série -->
         <div class="flex justify-bewteen">
           <div class="flex justify-center w-1/3">
@@ -23,22 +47,27 @@
             </div>
           </div>
         </div>
-        <div class="flex justify-end p-2">
-          <div class="mt-2 mr-2">
-            <span class="font-bold">Début :</span> {{ detail.start_date }}
-            <span v-if="detail.end_date" class="font-bold ml-4">Fin :</span>
-            {{ detail.end_date }}
+        <div class="flex justify-between p-2">
+          <div class="mt-2 mr-2 font-bold">
+            Rating : {{ detail.rating }} / 10
           </div>
-          <div
-            v-bind:class="{
-              'bg-green-500 text-white rounded-full p-1':
-                detail.status === 'Running',
-              'bg-red-500 text-white rounded-full p-1':
-                detail.status === 'Ended',
-            }"
-            class="w-64"
-          >
-            {{ detail.status }}
+          <div class="flex justify-end">
+            <div class="mt-2 mr-2">
+              <span class="font-bold">Début :</span> {{ detail.start_date }}
+              <span v-if="detail.end_date" class="font-bold ml-4">Fin :</span>
+              {{ detail.end_date }}
+            </div>
+            <div
+              v-bind:class="{
+                'bg-green-500 text-white rounded-full p-1':
+                  detail.status === 'Running',
+                'bg-red-500 text-white rounded-full p-1':
+                  detail.status === 'Ended',
+              }"
+              class="w-64"
+            >
+              {{ detail.status }}
+            </div>
           </div>
         </div>
       </div>
