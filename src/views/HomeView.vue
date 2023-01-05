@@ -1,17 +1,6 @@
 <template>
   <div id="app" class="flex flex-col h-screen" v-cloak>
-    <div class="h-12 sticky top-0 z-50 bg-black">
-      <div class="flex justify-between ml-10 p-2 items-center h-full">
-        <p class="text-2xl text-white">MOST POPULAR TV SHOW LIST</p>
-        <input
-          type="text"
-          v-model="searchQuery"
-          placeholder="Rechercher..."
-          @input="searchShows"
-          class="p-1 rounded-md w-64"
-        />
-      </div>
-    </div>
+    <Navbar @searchShows="searchShows"/>
     <div
       id="contenu"
       class="flex flex-grow p-5 w-full padding overflow-auto"
@@ -75,8 +64,10 @@
     </div>
   </div>
 </template>
-		<script>
+<script>
+import Navbar from '@/components/Navbar.vue';
 export default {
+  components: { Navbar },
   name: "HomeView",
   data() {
     return {
@@ -85,7 +76,6 @@ export default {
       page: 0,
       shows: [],
       filteredShows: new Array(),
-      searchQuery: "",
     };
   },
 
@@ -96,9 +86,10 @@ export default {
 
   watch: {},
   methods: {
-    searchShows: function () {
+    searchShows(searchQuery) {
+      console.log("zigzig")
       this.filteredShows = this.shows.filter((show) => {
-        return show.name.toLowerCase().includes(this.searchQuery.toLowerCase());
+        return show.name.toLowerCase().includes(searchQuery.toLowerCase());
       });
     },
     fetchTvShows: async function () {
