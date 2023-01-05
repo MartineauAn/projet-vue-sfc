@@ -1,7 +1,7 @@
 <template>
     <div class="h-12 sticky top-0 z-50 bg-black">
       <div class="flex justify-between ml-10 p-2 items-center h-full">
-        <p class="text-2xl text-white">MOST POPULAR TV SHOW LIST</p>
+        <router-link :to="'/'" class="text-2xl text-white">MOST POPULAR TV SHOW LIST</router-link>
         <div v-if="$route.name != 'detail'">
             <input
           type="text"
