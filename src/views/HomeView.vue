@@ -19,11 +19,10 @@
     </div>
   </div>
 </template>
-		<script>
-    import Navbar from '@/components/Navbar.vue';
-    import ShowCard from '../components/ShowCard.vue'
+<script>
+import Navbar from '../components/Navbar.vue';
+import ShowCard from '../components/ShowCard.vue';
 export default {
-  components: { Navbar },
   name: "HomeView",
   data() {
     return {
@@ -35,7 +34,8 @@ export default {
     };
   },
   components: {
-    ShowCard
+    ShowCard,
+    Navbar,
   },
   created: function () {
     this.fetchTvShows();
